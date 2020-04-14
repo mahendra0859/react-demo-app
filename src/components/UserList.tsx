@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Modal, Button } from "react-bootstrap";
-// import axios from "axios";
-import db from "../db/users.json";
+import axios from "axios";
 
 interface ActivityPeriods {
   start_time: string;
@@ -18,13 +17,12 @@ const UserList = (): JSX.Element => {
   const [users, setUsers] = useState<User[]>([]);
   const [show, setShow] = useState<boolean>(false);
   useEffect(() => {
-    // (async () => {
-    //   const response = await axios.get(
-    //     "https://my.api.mockaroo.com/user.json?key="
-    //   );
-    //   setUsers(response.data);
-    // })();
-    setUsers(db);
+    (async () => {
+      const response = await axios.get(
+        "https://raw.githubusercontent.com/mahendra0859/react-demo-app/master/src/db/users.json"
+      );
+      setUsers(response.data);
+    })();
   }, []);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
