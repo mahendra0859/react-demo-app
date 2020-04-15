@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { AcivityModal, Loader, UserTable } from "./";
+import { AcivityModal, Loader, UserTable, Pagination } from "./";
 import { ActivityPeriods, User } from "../constants";
 
 const UserList = (): JSX.Element => {
   const [users, setUsers] = useState<User[]>([]);
   const [activityPeriods, setActivityPeriods] = useState<ActivityPeriods[]>([]);
   const [show, setShow] = useState<boolean>(false);
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [pageSize] = useState<number>(10);
   useEffect(() => {
     (async () => {
       const response = await axios.get(
@@ -20,11 +22,23 @@ const UserList = (): JSX.Element => {
     setShow(true);
     setActivityPeriods(activities);
   };
+  const indexOfLastUser = pageNumber * pageSize,
+    indexOfFirstUser = indexOfLastUser - pageSize,
+    currentUsers = users.slice(indexOfFirstUser, indexOfLastUser),
+    paginate = (pageNo: number) => setPageNumber(pageNo);
   return (
     <>
       {users.length ? (
         <>
-          <UserTable users={users} handleShow={handleShow} />
+          <UserTable users={currentUsers} handleShow={handleShow} />
+          <div className="d-flex align-items-center justify-content-center">
+            <Pagination
+              pageNumber={pageNumber}
+              usersPerPage={pageSize}
+              totalUsers={users.length}
+              paginate={paginate}
+            />
+          </div>
           {activityPeriods.length ? (
             <AcivityModal
               show={show}

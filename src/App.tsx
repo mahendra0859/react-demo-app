@@ -8,7 +8,7 @@ import "./App.css";
 function App(): JSX.Element {
   return (
     <div className="container">
-      <div className="d-flex align-items-center justify-content-center my-5 ">
+      <div className="d-flex align-items-center justify-content-center my-2">
         <h1 className="text-center mr-4 text-info">
           List of users and their activity
         </h1>
