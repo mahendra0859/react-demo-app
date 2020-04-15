@@ -23,9 +23,13 @@ const Pagination = ({
         {pageNumbers.map((number: number) => (
           <li
             key={number}
-            className={number === pageNumber ? "page-item active" : "page-item"}
+            className={
+              number === pageNumber
+                ? "page-item active cursor-pointer"
+                : "page-item cursor-pointer"
+            }
           >
-            <a href="!#" onClick={() => paginate(number)} className="page-link">
+            <a onClick={() => paginate(number)} className="page-link">
               <b>{number}</b>
             </a>
           </li>
