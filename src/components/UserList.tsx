@@ -10,7 +10,7 @@ const UserList = (): JSX.Element => {
   useEffect(() => {
     (async () => {
       const response = await axios.get(
-        "https://raw.githubusercontent.com/mahendra0859/react-demo-app/master/src/db/users.json"
+        "https://raw.githubusercontent.com/mahendra0859/react-demo-app/master/src/db/new_users.json"
       );
       setUsers(response.data);
     })();
