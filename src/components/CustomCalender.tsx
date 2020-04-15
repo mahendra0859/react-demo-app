@@ -9,7 +9,7 @@ interface CustomCalenderProps {
 const CustomCalender = ({
   calenderValue,
   onCalenderValueChange,
-}: CustomCalenderProps) => (
+}: CustomCalenderProps): JSX.Element => (
   <Calendar value={calenderValue} onChange={onCalenderValueChange} />
 );
 export default CustomCalender;

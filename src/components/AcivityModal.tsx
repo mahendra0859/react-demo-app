@@ -21,7 +21,14 @@ const AcivityModal = ({
     setCalenderValue(new Date(activityPeriods[0].start_time));
   }, [activityPeriods]);
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal
+      show={show}
+      onHide={() => {
+        handleClose();
+        setTimeRangeIndex(0);
+      }}
+      centered
+    >
       <Modal.Header closeButton>
         <Modal.Title>
           <span className="text-danger">User activity</span>
@@ -86,7 +93,13 @@ const AcivityModal = ({
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={handleClose}>
+        <Button
+          variant="primary"
+          onClick={() => {
+            handleClose();
+            setTimeRangeIndex(0);
+          }}
+        >
           Ok
         </Button>
       </Modal.Footer>
