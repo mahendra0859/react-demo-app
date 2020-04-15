@@ -11,9 +11,15 @@ const UserTable = ({ users, handleShow }: UserTableProps): JSX.Element => (
   <Table hover bordered striped>
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Time Zone</th>
+        <th scope="col" className="text-primary">
+          #
+        </th>
+        <th scope="col" className="text-primary">
+          Name
+        </th>
+        <th scope="col" className="text-primary">
+          Time Zone
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +29,9 @@ const UserTable = ({ users, handleShow }: UserTableProps): JSX.Element => (
           className="cursor-pointer"
           onClick={() => handleShow(user.activity_periods)}
         >
-          <th scope="row">{user.id}</th>
+          <th scope="row" className="text-info">
+            {user.id}
+          </th>
           <td>{user.real_name}</td>
           <td>{user.tz}</td>
         </tr>

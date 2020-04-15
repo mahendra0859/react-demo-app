@@ -25,11 +25,13 @@ const UserList = (): JSX.Element => {
       {users.length ? (
         <>
           <UserTable users={users} handleShow={handleShow} />
-          <AcivityModal
-            show={show}
-            handleClose={handleClose}
-            activityPeriods={activityPeriods}
-          />
+          {activityPeriods.length ? (
+            <AcivityModal
+              show={show}
+              handleClose={handleClose}
+              activityPeriods={activityPeriods}
+            />
+          ) : null}
         </>
       ) : (
         <Loader />
